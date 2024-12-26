@@ -37,7 +37,12 @@ const InvoiceMaker = () => {
       `,
       category: "Header",
     });
-
+    /*  TO-DO
+      1- USING REACT COMPONENTS INSTEAD OF LABEL AND CONTENTS ( THERE IS AGAIN A SEPERATE NPM PACKAGE FOR THAT)
+      2- DO WE NEED TO ALLOW USERS TO CHANGE THE ITEM-INFO TABLE 
+      3- SIZE OF PACKAGE
+      4-
+     */
     blockManager.add("company-phone", {
       label: `
         <div style="text-align: center; padding: 10px; border: 1px solid #ccc; max-width: 200px; overflow: hidden; height: 50px; display: flex; justify-content: center; align-items: center;">
@@ -124,7 +129,7 @@ const InvoiceMaker = () => {
         </div>
       `,  // Label with preview
       content: `
-        <div class="body-section-alt" style="width: 100%; border-collapse: collapse; margin: 20px 0; background-color: #f0f0f0;">
+        <div class="body-section-alt" style="width: 100%; border-collapse: collapse; margin: 20px 0; background-color: #f0f0f0; padding: 0 20px;">
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
             <thead>
               <tr>
@@ -155,7 +160,7 @@ const InvoiceMaker = () => {
           <p>Phone: (123) 456-7890</p>
           <p>Email: contact@company.com</p>
         </div>
-        <div class="body-section" style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+        <div class="body-section" style="width: 100%; border-collapse: collapse; margin: 20px 0; padding: 0 10px;">
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
             <thead>
               <tr>
@@ -184,11 +189,26 @@ const InvoiceMaker = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
+    <div style={{
+      display: 'flex',
+      height: '100vh',
+      border: '1px solid #ccc',
+      margin: '5px', // Outer margin
+      padding: '10px', // Inner padding
+      gap: '10px', // Spacing between blocks and workspace
+    }}>
       <div id="blocks" style={{ width: "20%", padding: "10px", background: "#f0f0f0" }}>
         <h4>Blocks</h4>
       </div>
-      <div id="gjs" style={{ flex: 1, background: "#fff" }}></div>
+      <div id="gjs" style={{ 
+          flex: 1,
+          background: '#fff',
+          padding: '10px', // Add padding inside workspace
+          border: '1px solid #ddd',
+          borderRadius: '4px', 
+        }}>
+
+      </div>
     </div>
   );
 };
