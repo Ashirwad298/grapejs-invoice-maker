@@ -21,29 +21,116 @@ const InvoiceMaker = () => {
       storageManager: false, // Disable storage for this demo
     });
 
-    // Define blocks (drag-and-drop components)
     const blockManager = editor.BlockManager;
 
-    blockManager.add("header-section", {
-      label: "Header Section",
+    // Create individual components for the header section with preview in the label
+    blockManager.add("company-name", {
+      label: `
+        <div style="text-align: center; padding: 10px; border: 1px solid #ccc; max-width: 200px; overflow: hidden; height: 50px; display: flex; justify-content: center; align-items: center;">
+          <h1 style="font-size: 16px; margin: 0; transform: scale(0.7);">Company Name</h1>
+        </div>
+      `,  // Label with preview
       content: `
-        <header style="text-align: center; padding: 20px;">
+        <div class="company-name" style="text-align: center; padding: 10px;">
           <h1>Company Name</h1>
-          <img src="https://via.placeholder.com/150" alt="Logo" style="max-width: 100px;"/>
-        </header>
+        </div>
       `,
+      category: "Header",
     });
 
-    blockManager.add("body-section", {
-      label: "Body Section",
+    blockManager.add("company-phone", {
+      label: `
+        <div style="text-align: center; padding: 10px; border: 1px solid #ccc; max-width: 200px; overflow: hidden; height: 50px; display: flex; justify-content: center; align-items: center;">
+          <p style="font-size: 14px; margin: 0; transform: scale(0.7);">Phone: (123) 456-7890</p>
+        </div>
+      `,  // Label with preview
       content: `
-        <div>
+        <div class="company-phone" style="text-align: center; padding: 10px;">
+          <p>Phone: (123) 456-7890</p>
+        </div>
+      `,
+      category: "Header",
+    });
+
+    blockManager.add("company-email", {
+      label: `
+        <div style="text-align: center; padding: 10px; border: 1px solid #ccc; max-width: 200px; overflow: hidden; height: 50px; display: flex; justify-content: center; align-items: center;">
+          <p style="font-size: 14px; margin: 0; transform: scale(0.7);">Email: contact@company.com</p>
+        </div>
+      `,  // Label with preview
+      content: `
+        <div class="company-email" style="text-align: center; padding: 10px;">
+          <p>Email: contact@company.com</p>
+        </div>
+      `,
+      category: "Header",
+    });
+
+    blockManager.add("company-logo", {
+      label: `
+        <div style="text-align: center; padding: 10px; border: 1px solid #ccc; max-width: 200px; overflow: hidden; height: 100px; display: flex; justify-content: center; align-items: center;">
+          <img src="https://via.placeholder.com/150" alt="Logo" style="max-width: 100%; height: auto; transform: scale(0.5);" />
+        </div>
+      `,  // Label with preview
+      content: `
+        <div class="company-logo" style="text-align: center; padding: 10px;">
+          <img src="https://via.placeholder.com/150" alt="Logo" style="max-width: 100%; height: auto;" />
+        </div>
+      `,
+      category: "Header",
+    });
+
+    // Create a full header section block with preview
+    blockManager.add("header-section", {
+      label: `
+        <div style="text-align: center; padding: 20px; border: 1px solid #ccc; max-width: 200px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h1 style="font-size: 16px; margin: 0; transform: scale(0.7);">Company Name</h1>
+          <img src="https://via.placeholder.com/150" alt="Logo" style="max-width: 100%; height: 40px; transform: scale(0.5);" />
+          <p style="font-size: 14px; transform: scale(0.7);">Phone: (123) 456-7890</p>
+          <p style="font-size: 14px; transform: scale(0.7);">Email: contact@company.com</p>
+        </div>
+      `,  // Label with preview
+      content: `
+        <div class="header-section" style="text-align: center; padding: 20px; border: 1px solid #000;">
+          <h1>Company Name</h1>
+          <img src="https://via.placeholder.com/150" alt="Logo" style="max-width: 100px;" />
+          <p>Phone: (123) 456-7890</p>
+          <p>Email: contact@company.com</p>
+        </div>
+      `,
+      category: "Header",
+    });
+
+    // Create an alternate body section with preview
+    blockManager.add("body-section-alt", {
+      label: `
+        <div style="width: 100%; border-collapse: collapse; margin: 20px 0; background-color: #f0f0f0;  transform: scale(0.6);">
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
             <thead>
               <tr>
-                <th style="border: 1px solid #000; padding: 10px;">Item</th>
-                <th style="border: 1px solid #000; padding: 10px;">Quantity</th>
-                <th style="border: 1px solid #000; padding: 10px;">Price</th>
+                <th style="border: 1px solid #000; padding: 15px; background-color: #ccc;">Product</th>
+                <th style="border: 1px solid #000; padding: 15px; background-color: #ccc;">Amount</th>
+                <th style="border: 1px solid #000; padding: 15px; background-color: #ccc;">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border: 1px solid #000; padding: 10px;">Product X</td>
+                <td style="border: 1px solid #000; padding: 10px;">2</td>
+                <td style="border: 1px solid #000; padding: 10px;">$200</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `,  // Label with preview
+      content: `
+        <div class="body-section-alt" style="width: 100%; border-collapse: collapse; margin: 20px 0; background-color: #f0f0f0;">
+          <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead>
+              <tr>
+                <th style="border: 1px solid #000; padding: 10px; background-color: #ccc;">Item</th>
+                <th style="border: 1px solid #000; padding: 10px; background-color: #ccc;">Quantity</th>
+                <th style="border: 1px solid #000; padding: 10px; background-color: #ccc;">Price</th>
               </tr>
             </thead>
             <tbody>
@@ -56,26 +143,19 @@ const InvoiceMaker = () => {
           </table>
         </div>
       `,
+      category: "Body",
     });
 
-    blockManager.add("footer-section", {
-      label: "Footer Section",
-      content: `
-        <footer style="text-align: center; padding: 20px;">
-          <p>Thank you for your business!</p>
-          <p>Contact: your-email@example.com</p>
-        </footer>
-      `,
-    });
-
-    // Add a premade template
+    // Add the default components (header, body, footer) to the workspace
     editor.setComponents(`
       <div>
-        <header style="text-align: center; padding: 20px;">
+        <div class="header-section" style="text-align: center; padding: 20px; border: 1px solid #000;">
           <h1>Company Name</h1>
-          <img src="https://via.placeholder.com/150" alt="Logo" style="max-width: 100px;"/>
-        </header>
-        <div>
+          <img src="https://via.placeholder.com/150" alt="Logo" style="max-width: 100px;" />
+          <p>Phone: (123) 456-7890</p>
+          <p>Email: contact@company.com</p>
+        </div>
+        <div class="body-section" style="width: 100%; border-collapse: collapse; margin: 20px 0;">
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
             <thead>
               <tr>
@@ -93,10 +173,6 @@ const InvoiceMaker = () => {
             </tbody>
           </table>
         </div>
-        <footer style="text-align: center; padding: 20px;">
-          <p>Thank you for your business!</p>
-          <p>Contact: your-email@example.com</p>
-        </footer>
       </div>
     `);
 
