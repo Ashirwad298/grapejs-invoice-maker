@@ -1,8 +1,14 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# step-1 - npm i
 
-Currently, two official plugins are available:
+# step-2 npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# experiment/preserve-state is the branch where we are able to preserve states
+
+# experiment/alternate-components with json is the reference branch from where most of the info can be taken.
+
+# Other branches did not work out.
+
+
+## Preserve state is stored in form of json. We need to make a modifier that modifies the json based on id. And a mapper to map data of vyapar to invoice data.
