@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import grapesjs from "grapesjs";
 import "grapesjs/dist/css/grapes.min.css";
-import { invoiceData } from "./data"; // Import the JSON data
+import { invoiceData } from "./data"; // Import your JSON data
 
 const InvoiceMaker = () => {
   const editorRef = useRef(null);
 
   useEffect(() => {
+    // Initialize the editor with local storage for state persistence
     const editor = grapesjs.init({
       container: "#gjs",
       fromElement: true,
@@ -14,7 +15,15 @@ const InvoiceMaker = () => {
       width: "100%",
       panels: { defaults: [] },
       blockManager: { appendTo: "#blocks" },
-      storageManager: false,
+      storageManager: {
+        type: 'local', // Use local storage to save and load data
+        autosave: true, // Automatically save the state periodically
+        autoload: true, // Load the state from local storage on editor load
+        stepsBeforeSave: 1, // Number of steps before saving
+        storeComponents: true, // Store components (like dragged blocks)
+        storeStyles: true, // Store styles (like colors, fonts)
+        storeLabels: true, // Store labels if you are using labels in the blocks
+      },
     });
 
     const blockManager = editor.BlockManager;
@@ -101,14 +110,14 @@ const InvoiceMaker = () => {
       preview: '<img src="placeholder-logo.png" alt="Company Logo" style="width: 50px; height: auto;" />',
       category: "Header",
     });
-    
+
     blockManager.add('company-email', {
       label: 'Company Email',
       content: '<div class="company-email">Email: yourcompany@example.com</div>',
       preview: '<div>Email: yourcompany@example.com</div>',
       category: "Header",
     });
-    
+
     blockManager.add('company-phone', {
       label: 'Company Phone',
       content: '<div class="company-phone">Phone: +1234567890</div>',
@@ -147,8 +156,6 @@ const InvoiceMaker = () => {
       preview: '<div style="padding: 10px; font-size: 12px;">Minimal Table</div>',
       category: "Body",
     });
-    
-    
 
     // Set default components
     editor.setComponents(`
@@ -183,8 +190,7 @@ const InvoiceMaker = () => {
         padding: '10px',
         border: '1px solid #ddd',
         borderRadius: '4px',
-      }}>
-      </div>
+      }}></div>
     </div>
   );
 };

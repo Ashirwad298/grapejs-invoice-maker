@@ -8,5 +8,7 @@ export const invoiceData = {
       { name: "Sample Item 2", quantity: 1, price: 200 },
       { name: "Sample Item 3", quantity: 4, price: 50 },
       { name: "Sample Item 4", quantity: 4, price: 50 },
+      { name: "Sample Item 4", quantity: 4, price: 50 },
+      { name: "Sample Item 74", quantity: 4, price: 50 },
     ],
   };
